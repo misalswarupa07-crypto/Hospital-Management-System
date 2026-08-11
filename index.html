@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hospital Management System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <div>
+      <h1>🏥 Hospital Management System</h1>
+      <p>Simple Hospital Administration Dashboard</p>
+    </div>
+    <button class="primary-btn" onclick="openAppointmentForm()">+ New Appointment</button>
+  </header>
+
+  <main class="container">
+    <section class="stats">
+      <div class="card"><span>👨‍⚕️</span><div><h3 id="doctorCount">12</h3><p>Doctors</p></div></div>
+      <div class="card"><span>🧑‍🤝‍🧑</span><div><h3 id="patientCount">248</h3><p>Patients</p></div></div>
+      <div class="card"><span>📅</span><div><h3 id="appointmentCount">36</h3><p>Appointments</p></div></div>
+      <div class="card"><span>🛏️</span><div><h3>18</h3><p>Available Beds</p></div></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-title">
+        <div>
+          <h2>Patient Registration</h2>
+          <p>Add a new patient to the system.</p>
+        </div>
+      </div>
+
+      <form id="patientForm" class="form-grid">
+        <input id="patientName" type="text" placeholder="Patient Name" required>
+        <input id="patientAge" type="number" min="1" max="120" placeholder="Age" required>
+        <select id="patientGender" required>
+          <option value="">Select Gender</option>
+          <option>Male</option>
+          <option>Female</option>
+          <option>Other</option>
+        </select>
+        <input id="patientPhone" type="tel" placeholder="Phone Number" required>
+        <input id="patientDisease" type="text" placeholder="Disease / Problem" required>
+        <button class="primary-btn" type="submit">Register Patient</button>
+      </form>
+    </section>
+
+    <section class="panel">
+      <div class="panel-title">
+        <div>
+          <h2>Recent Patients</h2>
+          <p>Registered patients are shown below.</p>
+        </div>
+        <input id="searchPatient" class="search" type="search" placeholder="Search patient...">
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Patient ID</th><th>Name</th><th>Age</th><th>Gender</th><th>Phone</th><th>Problem</th><th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="patientTable">
+            <tr><td>P001</td><td>Rahul Patil</td><td>32</td><td>Male</td><td>9876543210</td><td>Fever</td><td><button class="danger-btn" onclick="deleteRow(this)">Delete</button></td></tr>
+            <tr><td>P002</td><td>Priya Sharma</td><td>27</td><td>Female</td><td>9123456780</td><td>Headache</td><td><button class="danger-btn" onclick="deleteRow(this)">Delete</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-title">
+        <div>
+          <h2>Today's Appointments</h2>
+          <p>Upcoming appointments.</p>
+        </div>
+      </div>
+      <div id="appointments" class="appointments">
+        <div class="appointment"><strong>10:00 AM</strong><span>Rahul Patil — Dr. Mehta</span><b>Confirmed</b></div>
+        <div class="appointment"><strong>12:30 PM</strong><span>Priya Sharma — Dr. Joshi</span><b>Confirmed</b></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="appointmentModal" class="modal hidden">
+    <div class="modal-box">
+      <button class="close" onclick="closeAppointmentForm()">×</button>
+      <h2>New Appointment</h2>
+      <form id="appointmentForm">
+        <input id="appointmentPatient" type="text" placeholder="Patient Name" required>
+        <input id="appointmentDoctor" type="text" placeholder="Doctor Name" required>
+        <input id="appointmentTime" type="time" required>
+        <button class="primary-btn" type="submit">Book Appointment</button>
+      </form>
+    </div>
+  </div>
+
+  <footer>© 2026 Hospital Management System | Educational Project</footer>
+  <script src="script.js"></script>
+</body>
+</html>
